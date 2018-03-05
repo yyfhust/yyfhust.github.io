@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="yyf技术小白成长日记">
+<meta name="description" content="1.从数据开始定义”类”描述==数据==外观（状态）和功能（行为）。对象是类的实例。 1.1.预置核心数据类型Python 拥有两个主要的内嵌的有关数值的类，用以记录整数和浮点数。这两个Python中的类被称作int和float。而标准的算术运算符，如+，-，*，/和**（乘方）.其它的一些非常有用的运算符还有取模，用%实现，和地板除，用//实现。 Python 中用以表达布尔数据类型的bool类">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础知识快速回顾">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/python基础知识快速回顾/index.html">
 <meta property="og:site_name" content="YYF">
-<meta property="og:description" content="yyf技术小白成长日记">
+<meta property="og:description" content="1.从数据开始定义”类”描述==数据==外观（状态）和功能（行为）。对象是类的实例。 1.1.预置核心数据类型Python 拥有两个主要的内嵌的有关数值的类，用以记录整数和浮点数。这两个Python中的类被称作int和float。而标准的算术运算符，如+，-，*，/和**（乘方）.其它的一些非常有用的运算符还有取模，用%实现，和地板除，用//实现。 Python 中用以表达布尔数据类型的bool类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-05T06:50:57.724Z">
+<meta property="og:updated_time" content="2018-03-05T08:48:01.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础知识快速回顾">
-<meta name="twitter:description" content="yyf技术小白成长日记">
+<meta name="twitter:description" content="1.从数据开始定义”类”描述==数据==外观（状态）和功能（行为）。对象是类的实例。 1.1.预置核心数据类型Python 拥有两个主要的内嵌的有关数值的类，用以记录整数和浮点数。这两个Python中的类被称作int和float。而标准的算术运算符，如+，-，*，/和**（乘方）.其它的一些非常有用的运算符还有取模，用%实现，和地板除，用//实现。 Python 中用以表达布尔数据类型的bool类">
 
 
 
@@ -332,6 +333,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法python描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法python描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -359,7 +382,95 @@
       
 
       
-        
+        <h2 id="1-从数据开始"><a href="#1-从数据开始" class="headerlink" title="1.从数据开始"></a>1.从数据开始</h2><p>定义”类”描述==数据==外观（状态）和功能（行为）。<br>对象是类的实例。</p>
+<h3 id="1-1-预置核心数据类型"><a href="#1-1-预置核心数据类型" class="headerlink" title="1.1.预置核心数据类型"></a>1.1.预置核心数据类型</h3><p>Python 拥有两个主要的内嵌的有关数值的类，用以记录整数和浮点数。这两个Python中的类被称作int和float。而标准的算术运算符，如+，-，*，/和**（乘方）.其它的一些非常有用的运算符还有取模，用%实现，和地板除，用//实现。</p>
+<p>Python 中用以表达布尔数据类型的bool类，在表达真值的时候非常有用。对于布尔对象，状态变量的可能值为True 或者False，标准的布尔运算符为and , or, not。布尔型的数据对象常常也被用作比较运算例如等于（==），大于（&gt;）的结果表示。</p>
+<p>在Python 中，当一个名字第一次被用在了赋值语句的左边时，一个变量就随之产生了。赋值语句提供了联系标识符与值的途径。变量会持有一个对数据的引用，而并不是数据本身。</p>
+<h3 id="1-2-预置集合数据类型"><a href="#1-2-预置集合数据类型" class="headerlink" title="1.2.预置集合数据类型"></a>1.2.预置集合数据类型</h3><p>有序容器：列表，字符串，元组；—–==序列==<br>无序容器：字典，集合</p>
+<p>==序列==通用运算符：<br>索引  []<br>连接  +<br>重复  *<br>是否在其中  in<br>长度  len<br>切片  [ : ]  </p>
+<pre><code>列表常用方法： 
+list.method(...)  
+list.append(item)  
+list.insert(i,item)
+list.pop()  
+list.pop(i)  
+list.sort()  
+list.reverse()  
+del list[i]  
+list.index(item) 返回列表第一个等于item的索引  
+list.count(item)  
+list.remove(item)
+
+一个python中的与list相关的常用功能那就是range。range 产生了一个有顺序的对象，list(range(a,b,步数)) 生成指定列表
+
+
+字符串是可以储存零个或多个字母，数字，或其他符号的有序容器。因为字符串是序列，所以所有之前提及的对序列的操作都适用。另外，字符串也有它的一系列方法
+string.center(w) 返回一个字符串，w长度，原字符串居中  
+string.count(item)  
+string.ljust(w) 返回一个字符串，w 长度，原字符串居左  rjust居右
+string.lower() 返回一个字符串，全部小写  
+string.find(item)  查询 item，返回第一个匹配的索引位置  
+string.split(item) 以 schar 为分隔符，将原字符串分割，返回一个列表  
+
+字符串和列表之间最大的区别就是列表可以被修改而字符串不能。这被称作可变性。列表是 可变的，字符串是不可变的。比如，你可以通过赋值和索引改变一个列表中的元素，而对于 字符串这种操作是不允许的。  
+
+
+元组tuple和列表list类似，也是异质数据序列容器，区别是，tuple不可改变其中数据，就像字符串。元表不可被修改。元表表示为用圆括号括起的，用逗号隔开的一系列值。当然，作为一个序列，它也适用于上述的关于序列的运算符.  
+</code></pre><p>集合是0个或多个数据的无序散列容器。集合不允许出现重复元素，表示为花括号括起的、用逗号隔开的一系列值。空的集合表示为set()。集合是异质的,并且集合是可变的。<br>操作:<br>in, len, | , &amp; , -, &lt;=</p>
+<p>字典包含一个键（key）和一个值（value）<br>运算:<br>dic[‘key’]<br>key in dic<br>del dic[‘key’]  </p>
+<p>方法：<br>dic.keys() 以列表的形式返回 dic 中的所有键(key)<br>dic.values()<br>dic.items() 以列表的形式返回dic中的所有键值对，列表每个元素是包含键和值的元组<br>dic.get(key)<br>dic.get(key,alt)  返回 key 所对应的值，如果 key 不存在，就返回 alt  </p>
+<h2 id="2-输入与输出"><a href="#2-输入与输出" class="headerlink" title="2.输入与输出"></a>2.输入与输出</h2><p>输入<br>aName = input(‘Please enter your name: ‘)<br>input 函数在接收到用户的输入后，它的返回值是一个字符串。其表现了用户在看到输入提示后所输入的数据类型的准确特征，如果你想把这个字符串转化为另外一种数据类型，必须进行明确的类型转换  </p>
+<p>字符串格式输出  </p>
+<p>通过设定 sep 参数来修改分隔符。此外,每一行输出都默认以新行字符(&gt;&gt;&gt;)结束，使用 end 参数可以改变这一设定。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>print(“Hello”)<br>Hello<br>print(“Hello”,”World”)<br>Hello World<br>print(“Hello”,”World”, sep=”<strong><em>“)<br>Hello\</em>**World<br>print(“Hello”,”World”, end=”*</strong>“)<br>Hello World***</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>print(aName, “is”, age, “years old.”) 等价于<br>print(“%s is %d years old.” % (aName, age))<br>% 是字符串运算符，被称为格式操作符。在上面这 个表达式中，% 的左边是模版或者格式字符串，右边则是一个容器，其中包含了替换格式字符串的变量值。右边容器中的变量的个数必须和左边字符串中的占位符的数目一致，在用变量值替换占位符的过程中，从左到右依次读取变量，按顺序替代占位符的位置。<br>个容器既可以是元组，也可以是字典。如果这个容器是元组，那么变量值的插入是按顺序的，也就是说，元组中的第一个元素对应于格式化字符串的第一个占位符,然后从左往右依次对应。如果这个容器是字典,那么变量值是按照他们的键(key)来插入的，在这种情况下，所有的转换字符必须用表格中的(name)修饰符来指定键(key)的名称,从而插入其值。</p>
+<h2 id="3-控制结构"><a href="#3-控制结构" class="headerlink" title="3.控制结构"></a>3.控制结构</h2><p>迭代：<br>while 布尔表达式为true：<br>for  &nbsp;&nbsp;&nbsp;结合Python 容器使用  </p>
+<p>选择：<br>if;elif,else  </p>
+<p>在列表中，存在一种替代方法使用迭代和选择结构创建列表。这被称为列表解析。列表解析可以让你创建基于某些处理或选择条件的列表。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>sqlist=[x*x for x in range(1,11)]<br>sqlist<br>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]  </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>列表解析中也可以使用选择语句  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>sqlist=[x*x for x in range(1,11) if x%2 != 0]<br>sqlist<br>[1, 9, 25, 49, 81]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>任何支持迭代运算的序列都可以在列表解析中被用来构造一个新的列表。</p>
+<h2 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4.异常处理"></a>4.异常处理</h2><p>当异常发生时，我们称为异常被“提出”。可以通过 try 语句“处理”已提出的异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    常规操作</span><br><span class="line">except:</span><br><span class="line">    出错的操作</span><br></pre></td></tr></table></figure>
+<p>另外，程序员可以通过使用 raise 语句自己制造运行异常。</p>
+<h2 id="5-定义函数"><a href="#5-定义函数" class="headerlink" title="5.定义函数"></a>5.定义函数</h2><p>一个函数定义需要一个名字，一组参数，和函数主体。它也可以返回一个确定值   </p>
+<h2 id="6-PYTHON-面向对象编程：定义类"><a href="#6-PYTHON-面向对象编程：定义类" class="headerlink" title="6.PYTHON 面向对象编程：定义类"></a>6.PYTHON 面向对象编程：定义类</h2><p>目前为止我们已经用了很多内置的类来说明数据和控制的构成。但是，面向对象的编程语言一个最重要的特征是允许编程者（解决问题的人）来创造一个可以用来解决问题的数据模型的新的类。  </p>
+<h3 id="6-1下面以Fration类举例-自定义一个表示分数的类"><a href="#6-1下面以Fration类举例-自定义一个表示分数的类" class="headerlink" title="6.1下面以Fration类举例 (自定义一个表示分数的类)"></a>6.1下面以Fration类举例 (自定义一个表示分数的类)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Fraction:</span><br><span class="line">    def __init__(self,top,bottom): ## 初始化方法</span><br><span class="line">        self.num = top</span><br><span class="line">        self.den = bottom</span><br></pre></td></tr></table></figure>
+<p>正式的参数列表包含三项（self,top,bottom）。self是一个特殊的参数，都可以用来作为参考返回对象本身。它必须是第一个正式参数；然而，调用时它将永远不需给出一个实际参数值。如前所述，Fraction需要两块状态数据，分子和分母。在构造函数符号self.num定义Fraction对象有一个内部的数据对象被称为num作为它的状态。同样，self.den被创造为分母。这两个形参的值最初被分配的状态，使新的fraction对象知道它的起始值。</p>
+<p>==实现抽象数据类型要求的行为：==  </p>
+<p>==打印分数对象：==</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>myf = Fraction(3,5)<br>print(myf)  </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>&lt;<strong>main</strong>.Fraction instance at 0x409b1acc&gt;   ##打印出了对象的内存，不希望这样</p>
+<p>solution： 重写<strong>str</strong>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def __str__(self):</span><br><span class="line">    return str(self.num)+&quot;/&quot;+str(self.den)</span><br></pre></td></tr></table></figure></p>
+<p>==希望支持 + 运算：==<br>重写<strong>add</strong>方法 ，它需要两个参数。第一，self，这个总是需要的，第二是在另一个被操作数的表达。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def __add__(self,otherfraction):</span><br><span class="line">    newnum = self.num*otherfraction.den + self.den*otherfraction.num</span><br><span class="line">    newden = self.den * otherfraction.den</span><br><span class="line">    return Fraction(newnum,newden)</span><br></pre></td></tr></table></figure></p>
+<p>==判断两个“分数”相等？==<br>重写<strong>eq</strong>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def __eq__(self, other):</span><br><span class="line">    firstnum = self.num * other.den</span><br><span class="line">    secondnum = other.num * self.den</span><br><span class="line">    return firstnum == secondnum</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-2-继承"><a href="#6-2-继承" class="headerlink" title="6.2.继承"></a>6.2.继承</h3><p>子类能够继承父类的数据和行为特征，类似于孩子们继承父母的特征。这些类通常称为子类和父类。eg：有序集合的类型包括列表(list)、元组(tuple)和字符串(string)。就像孩子们一方面继承父母的特征，另一方面也通过添加额外的特征来加以区分自己，这三者都继承了共同的数据组织和操作，但是，它们每一个都是独特的，区别在于数据是否均匀、是否不变。  </p>
+
       
     </div>
     
@@ -373,6 +484,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
       
 
       
@@ -427,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -450,7 +576,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -486,6 +630,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-从数据开始"><span class="nav-number">1.</span> <span class="nav-text">1.从数据开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-预置核心数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.预置核心数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-预置集合数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.预置集合数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-输入与输出"><span class="nav-number">2.</span> <span class="nav-text">2.输入与输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-控制结构"><span class="nav-number">3.</span> <span class="nav-text">3.控制结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异常处理"><span class="nav-number">4.</span> <span class="nav-text">4.异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-定义函数"><span class="nav-number">5.</span> <span class="nav-text">5.定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-PYTHON-面向对象编程：定义类"><span class="nav-number">6.</span> <span class="nav-text">6.PYTHON 面向对象编程：定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1下面以Fration类举例-自定义一个表示分数的类"><span class="nav-number">6.1.</span> <span class="nav-text">6.1下面以Fration类举例 (自定义一个表示分数的类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-继承"><span class="nav-number">6.2.</span> <span class="nav-text">6.2.继承</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
