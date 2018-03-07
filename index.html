@@ -262,6 +262,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/排序和搜索/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yifan Ye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YYF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/排序和搜索/" itemprop="url">排序和搜索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T19:40:48+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法python描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法python描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-搜索"><a href="#1-搜索" class="headerlink" title="1.搜索"></a>1.搜索</h1><p>在 Python 中，有一个非常简单的方法来询问一个项是否在一个项列表中。我们使用 in 运算符。  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>15 in [3,5,2,4,1]<br>False<br>3 in [3,5,2,4,1]<br>True  </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="2-顺序查找"><a href="#2-顺序查找" class="headerlink" title="2.顺序查找"></a>2.顺序查找</h1><p>当数据项存储在诸如列表的集合中时，我们说它们具有线性或顺序关系。 每个数据项都存储在相对于其他数据项的位置。 在 Python 列表中，这些相对位置是单个项的索引值。由于这些索引值是有序的，我们可以按顺序访问它们。 这个过程产生我们的第一种搜索技术 顺序查找。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def sequentialSearch(alist, item):</span><br><span class="line">        pos = 0</span><br><span class="line">        found = False</span><br><span class="line"></span><br><span class="line">        while pos &lt; len(alist) and not found:</span><br><span class="line">            if alist[pos] == item:</span><br><span class="line">                found = True</span><br><span class="line">            else:</span><br><span class="line">                pos = pos+1</span><br><span class="line"></span><br><span class="line">        return found</span><br><span class="line"></span><br><span class="line">testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]</span><br><span class="line">print(sequentialSearch(testlist, 3))</span><br><span class="line">print(sequentialSearch(testlist, 13))</span><br></pre></td></tr></table></figure>
+<p>假设项的列表按升序排列。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def orderedSequentialSearch(alist, item):</span><br><span class="line">        pos = 0</span><br><span class="line">        found = False</span><br><span class="line">        stop = False</span><br><span class="line">        while pos &lt; len(alist) and not found and not stop:</span><br><span class="line">            if alist[pos] == item:</span><br><span class="line">                found = True</span><br><span class="line">            else:</span><br><span class="line">                if alist[pos] &gt; item:</span><br><span class="line">                    stop = True</span><br><span class="line">                else:</span><br><span class="line">                    pos = pos+1</span><br><span class="line"></span><br><span class="line">        return found</span><br><span class="line"></span><br><span class="line">testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]</span><br><span class="line">print(orderedSequentialSearch(testlist, 3))</span><br><span class="line">print(orderedSequentialSearch(testlist, 13))</span><br></pre></td></tr></table></figure>
+<h1 id="3-二分查找"><a href="#3-二分查找" class="headerlink" title="3.二分查找"></a>3.二分查找</h1><p>适用于有序表  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def binarySearch(alist, item):</span><br><span class="line">        first = 0</span><br><span class="line">        last = len(alist)-1</span><br><span class="line">        found = False</span><br><span class="line"></span><br><span class="line">        while first&lt;=last and not found:</span><br><span class="line">            midpoint = (first + last)//2</span><br><span class="line">            if alist[midpoint] == item:</span><br><span class="line">                found = True</span><br><span class="line">            else:</span><br><span class="line">                if item &lt; alist[midpoint]:</span><br><span class="line">                    last = midpoint-1</span><br><span class="line">                else:</span><br><span class="line">                    first = midpoint+1</span><br><span class="line"></span><br><span class="line">        return found</span><br><span class="line"></span><br><span class="line">testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]</span><br><span class="line">print(binarySearch(testlist, 3))</span><br><span class="line">print(binarySearch(testlist, 13))</span><br></pre></td></tr></table></figure>
+<p>也可以用递归实现  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def binarySearch(alist, item):</span><br><span class="line">        if len(alist) == 0:</span><br><span class="line">            return False</span><br><span class="line">        else:</span><br><span class="line">            midpoint = len(alist)//2</span><br><span class="line">            if alist[midpoint]==item:</span><br><span class="line">              return True</span><br><span class="line">            else:</span><br><span class="line">              if item&lt;alist[midpoint]:</span><br><span class="line">                return binarySearch(alist[:midpoint],item)</span><br><span class="line">              else:</span><br><span class="line">                return binarySearch(alist[midpoint+1:],item)</span><br><span class="line"></span><br><span class="line">testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]</span><br><span class="line">print(binarySearch(testlist, 3))</span><br><span class="line">print(binarySearch(testlist, 13))</span><br></pre></td></tr></table></figure>
+<h1 id="3-Hash查找"><a href="#3-Hash查找" class="headerlink" title="3.Hash查找"></a>3.Hash查找</h1><p>尝试进一步建立一个可以在 O(1) 时间内搜索的数据结构。这个概念被称为 Hash 查找。  </p>
+<p>哈希表 是以一种容易找到它们的方式存储的项的集合。哈希表的每个位置，通常称为一个槽，可以容纳一个项，并且由从 0 开始的整数值命名。  </p>
+<p>项和该项在散列表中所属的槽之间的映射被称为 hash 函数。 hash 函数将接收集合中的任何项，并在槽名范围内（0和 m-1之间）返回一个整数。假设我们有整数项 54,26,93,17,77 和 31 的集合。我们的第一个 hash 函数，有时被称为 余数法 ，只需要一个项并将其除以表大小，返回剩余部分作为其散列值（h(item) = item％11）。</p>
+<h2 id="3-1hash-函数"><a href="#3-1hash-函数" class="headerlink" title="3.1hash 函数"></a>3.1hash 函数</h2><p>给定项的集合，将每个项映射到唯一槽的散列函数被称为完美散列函数。如果我们知道项和集合将永远不会改变，那么可以构造一个完美的散列函数。不幸的是，给定任意的项集合，没有系统的方法来构建完美的散列函数。幸运的是，我们不需要散列函数是完美的，仍然可以提高性能。<br>总是具有完美散列函数的一种方式是增加散列表的大小，使得可以容纳项范围中的每个可能值。这保证每个项将具有唯一的槽。虽然这对于小数目的项是实用的，但是当可能项的数目大时是不可行的。例如，如果项是九位数的社保号码，则此方法将需要大约十亿个槽。如果我们只想存储 25 名学生的数据，我们将浪费大量的内存。<br>我们的目标是创建一个散列函数，最大限度地减少冲突数，易于计算，并均匀分布在哈希表中的项。有很多常用的方法来扩展简单余数法。我们将在这里介绍其中几个。  </p>
+<p><strong>分组求和法</strong><br>将项划分为相等大小的块（最后一块可能不是相等大小）。然后将这些块加在一起以求出散列值。例如，如果我们的项是电话号码 436-555-4601，我们将取出数字，并将它们分成2位数（43,65,55,46,01）。43 + 65 + 55 + 46 + 01，我们得到 210。我们假设哈希表有 11 个槽，那么我们需要除以 11 。在这种情况下，210％11 为 1，因此电话号码 436-555-4601 散列到槽 1 。一些分组求和法会在求和之前每隔一个反转。对于上述示例，我们得到 43 + 56 + 55 + 64 + 01 = 219，其给出 219％11 = 10 。  </p>
+<p><strong>平方取中法</strong><br>先对该项平方，然后提取一部分数字结果。例如，如果项是 44，我们将首先计算 44^2 = 1,936 。通过提取中间两个数字 93 ，我们得到 5（93％11）。  </p>
+<p><strong>还可以为基于字符的项（如字符串）创建哈希函数</strong>  </p>
+<p><strong>。。。。。。。</strong></p>
+<h2 id="3-2-冲突解决"><a href="#3-2-冲突解决" class="headerlink" title="3.2 冲突解决"></a>3.2 冲突解决</h2><p>当两个项散列到同一个槽时，我们必须有一个系统的方法将第二个项放在散列表中。这个过程称为冲突解决。如前所述，如果散列函数是完美的，冲突将永远不会发生。然而，由于这通常是不可能的，所以冲突解决成为散列非常重要的部分。   </p>
+<p>解决冲突的一种方法是查找散列表，尝试查找到另一个空槽以保存导致冲突的项。一个简单的方法是从原始哈希值位置开始，然后以顺序方式移动槽，直到遇到第一个空槽。注意，我们可能需要回到第一个槽（循环）以查找整个散列表。这种冲突解决过程被称为开放寻址，因为它试图在散列表中找到下一个空槽或地址。通过系统地一次访问每个槽，我们执行称为线性探测的开放寻址技术。  </p>
+<p>用于处理冲突问题的替代方法是允许每个槽保持对项的集合（或链）的引用。链接允许许多项存在于哈希表中的相同位置。当发生冲突时，项仍然放在散列表的正确槽中。随着越来越多的项哈希到相同的位置，搜索集合中的项的难度增加。  </p>
+<h2 id="3-3-实现-map-抽象数据类型"><a href="#3-3-实现-map-抽象数据类型" class="headerlink" title="3.3 实现 map 抽象数据类型"></a>3.3 实现 map 抽象数据类型</h2><p>最有用的 Python 集合之一是字典。回想一下，字典是一种关联数据类型，你可以在其中存储键-值对。该键用于查找关联的值。我们经常将这个想法称为 map。  </p>
+<p>map 抽象数据类型定义如下。该结构是键与值之间的关联的无序集合。map 中的键都是唯一的，因此键和值之间存在一对一的关系。操作如下。  </p>
+<ul>
+<li>Map() 创建一个新的 map 。它返回一个空的 map 集合。</li>
+<li>put(key，val) 向 map 中添加一个新的键值对。如果键已经在 map 中，那么用新值替换旧值。</li>
+<li>get(key) 给定一个键，返回存储在 map 中的值或 None。</li>
+<li>del 使用 del map[key] 形式的语句从 map 中删除键值对。</li>
+<li>len() 返回存储在 map 中的键值对的数量。</li>
+<li>in 返回 True 对于 key in map 语句，如果给定的键在 map 中，否则为False。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">class HashTable:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.size = 11</span><br><span class="line">        self.slots = [None] * self.size</span><br><span class="line">        self.data = [None] * self.size</span><br><span class="line">		</span><br><span class="line">	def put(self,key,data):</span><br><span class="line">	  hashvalue = self.hashfunction(key,len(self.slots))</span><br><span class="line"></span><br><span class="line">	  if self.slots[hashvalue] == None:</span><br><span class="line">		self.slots[hashvalue] = key</span><br><span class="line">		self.data[hashvalue] = data</span><br><span class="line">	  else:</span><br><span class="line">		if self.slots[hashvalue] == key:</span><br><span class="line">		  self.data[hashvalue] = data  #replace</span><br><span class="line">		else:</span><br><span class="line">		  nextslot = self.rehash(hashvalue,len(self.slots))</span><br><span class="line">		  while self.slots[nextslot] != None and \</span><br><span class="line">						  self.slots[nextslot] != key:</span><br><span class="line">			nextslot = self.rehash(nextslot,len(self.slots))</span><br><span class="line"></span><br><span class="line">		  if self.slots[nextslot] == None:</span><br><span class="line">			self.slots[nextslot]=key</span><br><span class="line">			self.data[nextslot]=data</span><br><span class="line">		  else:</span><br><span class="line">			self.data[nextslot] = data #replace</span><br><span class="line"></span><br><span class="line">	def hashfunction(self,key,size):</span><br><span class="line">		 return key%size</span><br><span class="line"></span><br><span class="line">	def rehash(self,oldhash,size):</span><br><span class="line">		return (oldhash+1)%size</span><br><span class="line">		</span><br><span class="line">	def get(self,key):</span><br><span class="line">	  startslot = self.hashfunction(key,len(self.slots))</span><br><span class="line"></span><br><span class="line">	  data = None</span><br><span class="line">	  stop = False</span><br><span class="line">	  found = False</span><br><span class="line">	  position = startslot</span><br><span class="line">	  while self.slots[position] != None and  \</span><br><span class="line">						   not found and not stop:</span><br><span class="line">		 if self.slots[position] == key:</span><br><span class="line">		   found = True</span><br><span class="line">		   data = self.data[position]</span><br><span class="line">		 else:</span><br><span class="line">		   position=self.rehash(position,len(self.slots))</span><br><span class="line">		   if position == startslot:</span><br><span class="line">			   stop = True</span><br><span class="line">	  return data</span><br><span class="line">	  </span><br><span class="line">###  to提供附加的字典功能。重载 __getitem__ 和__setitem__ 方法以允许使用 [] 访问。 </span><br><span class="line">###  这意味着一旦创建了HashTable，索引操作符将可用。</span><br><span class="line">	def __getitem__(self,key):</span><br><span class="line">		return self.get(key)</span><br><span class="line"></span><br><span class="line">	def __setitem__(self,key,data):</span><br><span class="line">		self.put(key,data)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/递归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yifan Ye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YYF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/递归/" itemprop="url">递归</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T19:40:48+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法python描述/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法python描述</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>递归是一种解决问题的方法，将问题分解为更小的子问题，直到得到一个足够小的问题可以被很简单的解决。通常递归涉及函数调用自身。递归允许我们编写优雅的解决方案，解决可能很难编程的问题。  </p>
+<p><strong>递归的三定律</strong>  </p>
+<ol>
+<li>递归算法必须具有基本情况。</li>
+<li>递归算法必须改变其状态并向基本情况靠近。</li>
+<li>递归算法必须以递归方式调用自身。  </li>
+</ol>
+<p><strong>整数转换为任意进制字符串</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def toStr(n,base):</span><br><span class="line">   convertString = &quot;0123456789ABCDEF&quot;</span><br><span class="line">   if n &lt; base:</span><br><span class="line">      return convertString[n]</span><br><span class="line">   else:</span><br><span class="line">      return toStr(n//base,base) + convertString[n%base]</span><br><span class="line"></span><br><span class="line">print(toStr(10,2))</span><br><span class="line">ans: 1010</span><br></pre></td></tr></table></figure>
+<p><strong>栈帧：利用栈手动实现递归</strong><br>递归的本质是函数压栈！  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pythonds.basic.stack import Stack</span><br><span class="line"></span><br><span class="line">rStack = Stack()</span><br><span class="line"></span><br><span class="line">def toStr(n,base):</span><br><span class="line">    convertString = &quot;0123456789ABCDEF&quot;</span><br><span class="line">    while n &gt; 0:</span><br><span class="line">        if n &lt; base:</span><br><span class="line">            rStack.push(convertString[n])</span><br><span class="line">        else:</span><br><span class="line">            rStack.push(convertString[n % base])</span><br><span class="line">        n = n // base</span><br><span class="line">    res = &quot;&quot;</span><br><span class="line">    while not rStack.isEmpty():</span><br><span class="line">        res = res + str(rStack.pop())</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">print(toStr(10,2))</span><br></pre></td></tr></table></figure>
+<p>前面的例子让我们了解了 Python 如何实现一个递归函数调用。 当在 Python 中调用函数时，会分配一个栈来处理函数的局部变量。当函数返回时，返回值留在栈的顶部，以供调用函数访问。<br>栈帧还为函数使用的变量提供了一个作用域。 即使我们重复地调用相同的函数，每次调用都会为函数本地的变量创建一个新的作用域。  </p>
+<p><strong>谢尔宾斯基三角形</strong><br><a href="http://note.youdao.com/" target="_blank" rel="noopener">link</a></p>
+<p><strong>动态规划</strong><br><a href="http://note.youdao.com/" target="_blank" rel="noopener">link</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/线性数据结构-栈，队列，链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -795,7 +1129,7 @@ string.split(item) 以 schar 为分隔符，将原字符串分割，返回一个
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
