@@ -262,6 +262,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/Recurrent Neural Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yifan Ye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YYF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/Recurrent Neural Networks/" itemprop="url">Recurrent Neural Networks</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T19:40:48+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/deep-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">deep learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-Recurrent-Neural-Networks"><a href="#1-Recurrent-Neural-Networks" class="headerlink" title="1.Recurrent Neural Networks"></a>1.Recurrent Neural Networks</h1><h2 id="1-1-why-sequence-models"><a href="#1-1-why-sequence-models" class="headerlink" title="1.1 why sequence models"></a>1.1 why sequence models</h2><p><img src="https://s1.ax1x.com/2018/03/25/9qHMzF.png" alt="9qHMzF.png"></p>
+<p>X Y 均为时间序列<br>仅X为时间序列<br>仅Y为时间序列<br>X Y序列长度不同  </p>
+<p>以上均可用时间序列模型处理  </p>
+<h2 id="1-2-Notations"><a href="#1-2-Notations" class="headerlink" title="1.2 Notations"></a>1.2 Notations</h2><p><a href="https://imgchr.com/i/9qqI5q" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qqI5q.png" alt="9qqI5q.png"></a><br>i:代表第i个训练集<br>t:代表序列第i个元素<br>Tx(i): 代表第i个训练集的X序列长度  </p>
+<p><strong>Q：如果表示单个单词？？？</strong>  </p>
+<p>创建一个单词表 vocabulary<br><a href="https://imgchr.com/i/9qqxaR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qqxaR.png" alt="9qqxaR.png"></a>  </p>
+<h2 id="1-3-RNN-Model"><a href="#1-3-RNN-Model" class="headerlink" title="1.3 RNN Model"></a>1.3 RNN Model</h2><p><strong>为什么不可以用普通的神经网络模型？</strong><br><a href="https://imgchr.com/i/9qLPxO" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qLPxO.png" alt="9qLPxO.png"></a>    </p>
+<p><strong>RNN模型</strong><br>考虑TX=TY这一种简单情况<br>缺陷，只考虑到和之前的序列的联系，并没有考虑和之后序列的联系 （改进方法：BRNN）<br><a href="https://imgchr.com/i/9qLUJ0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qLUJ0.png" alt="9qLUJ0.png"></a>  </p>
+<p>前向传播<br><a href="https://imgchr.com/i/9qLRW6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qLRW6.png" alt="9qLRW6.png"></a><br>简化表示为<br><a href="https://imgchr.com/i/9qLv6S" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qLv6S.png" alt="9qLv6S.png"></a>  </p>
+<p>后向传播<br><a href="https://imgchr.com/i/9qOtne" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/25/9qOtne.png" alt="9qOtne.png"></a>  </p>
+<h2 id="1-4-different-types-of-RNNs"><a href="#1-4-different-types-of-RNNs" class="headerlink" title="1.4  different types of RNNs"></a>1.4  different types of RNNs</h2><p><img src="https://s1.ax1x.com/2018/03/25/9qHMzF.png" alt="9qHMzF.png"><br>可能Tx不等于Ty<br><a href="https://imgchr.com/i/9L47NT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9L47NT.png" alt="9L47NT.png"></a><br><a href="https://imgchr.com/i/9L4L34" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9L4L34.png" alt="9L4L34.png"></a></p>
+<p><a href="https://imgchr.com/i/9L4vuR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9L4vuR.png" alt="9L4vuR.png"></a></p>
+<h2 id="1-5-Language-Model-and-Sequence-generation"><a href="#1-5-Language-Model-and-Sequence-generation" class="headerlink" title="1.5 Language Model and Sequence generation"></a>1.5 Language Model and Sequence generation</h2><p><a href="https://imgchr.com/i/9L5ZDI" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9L5ZDI.png" alt="9L5ZDI.png"></a>  </p>
+<p>获取大量corpus（NLP术语：语料）<br>tokenize语料（创建vocabularly），y<br>句子结尾加上EOS 表示结束</p>
+<p><a href="https://imgchr.com/i/9LL2Ct" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9LL2Ct.png" alt="9LL2Ct.png"></a><br>用于评估指定句子存在的可能性。<br>eg：<br><a href="https://imgchr.com/i/9LOVKO" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9LOVKO.png" alt="9LOVKO.png"></a>  </p>
+<h2 id="1-6-Sampling-novel-sequences"><a href="#1-6-Sampling-novel-sequences" class="headerlink" title="1.6 Sampling novel sequences"></a>1.6 Sampling novel sequences</h2><p>通过1.5的方法创建了sequence model后，通过sampling来评估模型  </p>
+<p><a href="https://imgchr.com/i/9LXtl6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9LXtl6.png" alt="9LXtl6.png"></a></p>
+<p>从yhat \&lt;1>开始依据各个单词的概率分布来随机采样，采样单词作为下一级输出，后面依次类推。（采样到EOS结束  </p>
+<p>当然vocabularly不一定非要是单词（word level），也可以是字母（character level）  </p>
+<h2 id="1-7-Vanishing-gradients-with-RNNS"><a href="#1-7-Vanishing-gradients-with-RNNS" class="headerlink" title="1.7 Vanishing gradients with RNNS"></a>1.7 Vanishing gradients with RNNS</h2><p>语言的单词之间的联系可能会跨越很远“距离”<br>but前面的模型（local influence）并不能够很好的处理这个特点–basic RNN 的缺陷<br><a href="https://imgchr.com/i/9Oeq0J" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/26/9Oeq0J.png" alt="9Oeq0J.png"></a>  </p>
+<p><strong>解决办法：Gated Recurrent Unit(GRU)</strong>  </p>
+<p><a href="https://imgchr.com/i/9Oa2F0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9Oa2F0.png" alt="9Oa2F0.png"></a>  </p>
+<p>GRU引入了C = memory cell</p>
+<p><a href="https://imgchr.com/i/9OdZ6g" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9OdZ6g.png" alt="9OdZ6g.png"></a>  </p>
+<h2 id="1-8-Long-short-term-memory-LSTM"><a href="#1-8-Long-short-term-memory-LSTM" class="headerlink" title="1.8 Long short term memory (LSTM)"></a>1.8 Long short term memory (LSTM)</h2><p><a href="https://imgchr.com/i/9OdwA1" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9OdwA1.png" alt="9OdwA1.png"></a>   </p>
+<p><a href="https://imgchr.com/i/9OdBh6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9OdBh6.png" alt="9OdBh6.png"></a>  </p>
+<h2 id="1-8-Bidirectional-RNN"><a href="#1-8-Bidirectional-RNN" class="headerlink" title="1.8 Bidirectional RNN"></a>1.8 Bidirectional RNN</h2><p><a href="https://imgchr.com/i/9OdzCV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9OdzCV.png" alt="9OdzCV.png"></a>  </p>
+<h2 id="1-9-deep-RNNs"><a href="#1-9-deep-RNNs" class="headerlink" title="1.9 deep RNNs"></a>1.9 deep RNNs</h2><p><a href="https://imgchr.com/i/9OwngO" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/03/27/9OwngO.png" alt="9OwngO.png"></a>  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/树和树算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1426,7 +1595,7 @@ string.split(item) 以 schar 为分隔符，将原字符串分割，返回一个
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1437,7 +1606,7 @@ string.split(item) 以 schar 为分隔符，将原字符串分割，返回一个
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1448,7 +1617,7 @@ string.split(item) 以 schar 为分隔符，将原字符串分割，返回一个
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
