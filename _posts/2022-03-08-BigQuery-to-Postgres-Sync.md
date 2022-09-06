@@ -1,3 +1,13 @@
+---
+layout: post
+title: "BigQuery To Postgres Sync"
+description: "BigQuery To Postgres Sync"
+date: 2022-09-06T19:30:00-07:00
+tags: SQL
+image: resources/images/postbanners/Screenshot 2022-09-06 at 19.41.42.png
+---
+
+
 ## BigQuery To Postgres Sync
 
 Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
