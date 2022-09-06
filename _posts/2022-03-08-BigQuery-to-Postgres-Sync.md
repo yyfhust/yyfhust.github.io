@@ -4,7 +4,6 @@ title: BigQuery To Postgres Sync
 description: BigQuery To Postgres Sync
 date: 2022-09-06T19:30:00-07:00
 tags: SQL
-image: resources/images/postbanners/Screenshot 2022-09-06 at 19.41.42.png
 ---
 
 

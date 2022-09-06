@@ -37,7 +37,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: resources/images/Screenshot 2022-09-06 at 21.03.06.png # default site image
+      image: resources/images/profile.png # default site image
   - scope:
       path: ""
       type: posts
