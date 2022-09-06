@@ -36,6 +36,11 @@ titles_from_headings:
 defaults:
   - scope:
       path: ""
-      type: post
     values:
-      tags: Other
+      image: resources/images/Screenshot 2022-09-06 at 21.03.06.png # default site image
+  - scope:
+      path: ""
+      type: posts
+    values:
+      tags:
+        - Other #default tag
