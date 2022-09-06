@@ -1,8 +1,6 @@
 ---
 layout: post
 title: BigQuery To Postgres Sync
-description: BigQuery To Postgres Sync
-date: 2022-09-06T19:30:00-07:00
 tags: sql
 ---
 
