@@ -1,10 +1,10 @@
 ---
 layout: post
-title: BigQuery To Postgres Sync
-tags: SQL Database 
+title: A fast and memory-saving way of computing nearest neighbours
+tags: Algorithms Machine-learning 
 ---
 
-## BigQuery To Postgres Sync
+## A fast and memory-saving way of computing nearest neighbours
 
 Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
 
