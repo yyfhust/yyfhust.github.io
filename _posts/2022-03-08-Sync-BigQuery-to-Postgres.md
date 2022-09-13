@@ -7,9 +7,9 @@ tags: SQL Database
 ## Sync BigQuery To Postgres
 
 Recently I have been building a CRUD (Create, read, update and delete) application, 
-which allows some people to verify/edit/delete/update manually... some data in our database.
-All of our data is saved in Bigquery, as we do heavy ETL, and data analysis on a daily basis.
-However, Bigquery is suitable to perform CRUD transactions on few rows (even though theoretically you can!). 
+which allows some people to verify/edit/delete/update some data in our database.
+All the data is saved in Bigquery, as we do heavy ETL, and data analysis on a daily basis.
+However, Bigquery is not suitable to perform CRUD transactions on few rows (even though theoretically you can!). 
 In the face of such drawback, I decided to sync some Bigquery tables to Postgres(deployed in GCP Cloud SQL), and build a CRUD app on 
 top of Postgres.
 
@@ -22,7 +22,7 @@ To answer this question, let's first compare the difference between Bigquery and
 Bigquery is a fully-managed, serverless data warehouse, which supports ANSI SQL. It can auto-scale up to handle petabytes of data volume , 
 which set you free from maintaining scalability and performance of architecture. Also, 
 Bigquery is an OLAP (online analytical processing) and column-oriented database. It is very performant to use Bigquery 
-for data analysis and ETL, and bulk DML (Data manipulation). However, it is not a transactional and relational database (such as Postgres, MySQL etc) , so it is not suitable 
+to perform data analysis, ETL, and bulk DML (Data manipulation). However, Bigquery is not a transactional and relational database (such as Postgres, MySQL etc) , so it is not suitable 
 to perform high-frequency transactions on a single and small sets of rows, for the following reasons.
 - High throughput but long latency. It takes only a few seconds to read millions of rows, but updating/inserting/deleting/reading and single row can still take a few seconds. 
 - Quotas and limits of Bigquery.  
