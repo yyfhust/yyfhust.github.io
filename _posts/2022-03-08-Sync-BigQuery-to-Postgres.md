@@ -95,7 +95,7 @@ def insert_do_nothing_on_conflicts(sqltable, conn, keys, data_iter):
     do_nothing_stmt = insert_stmt.on_conflict_do_nothing(index_elements=[primaryKey])
 
     conn.execute(do_nothing_stmt)
-
+    
 df.to_sql(table_name , if_exists='append', con= engine, index=False, method=insert_do_nothing_on_conflicts, chunksize=chunksize)
 ```
 
@@ -103,6 +103,7 @@ df.to_sql(table_name , if_exists='append', con= engine, index=False, method=inse
 
 4. possible improvement: select only NEW rows from bigquery table rather than full-table (based on _ts_ms), when the size of table gets way too big
 
+---
 
 I also packaged the code as a typer app , and you can find it in this [repo](https://github.com/yyfhust/Sync_Bigquery_to_Postgres)
 
