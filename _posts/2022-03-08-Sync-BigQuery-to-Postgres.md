@@ -45,9 +45,11 @@ I personally have tried Airbyte.
 2. Create a new connection with Bigquery as source and postgres as Dst.
 (do not forget to white list airbyte's IP in Cloud SQl connection config)
 ![airbyte1](/resources/images/post1/airbyte1.png)
-3. Airbyte will auto-detected the tables in bigquery and postgres.  You can choose the tables, sync mode, replication frequency etc.
-![airbyte2](/resources/images/post1/airbyte2.png =100x20 )
 
+3. Airbyte will auto-detected the tables in bigquery and postgres.  You can choose the tables, sync mode, replication frequency etc.
+<p align="center">
+<img src="/resources/images/post1/airbyte2.png" alt="airbyte2" width="200"/>
+</p>
 
 ### 3. DIY
 We would like to have this part under our own control, and integrate it with own Airflow pipeline. 
