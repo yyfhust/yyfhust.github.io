@@ -36,7 +36,7 @@ which is a fully-managed  relational database service with some add-on features 
 
 ### 2. Existing available solution on the market 
 There are actually lots of existing commercial products which you can leverage to implement "Bigquery and Postgres Synchronization", 
-of budget and privacy are not your concern.
+if budget and privacy are not your concern.
 To name a few: Airbyte, hightouch etc..
 
 
@@ -46,21 +46,66 @@ I personally have tried Airbyte.
 (do not forget to white list airbyte's IP in Cloud SQl connection config)
 ![airbyte1](/resources/images/post1/airbyte1.png)
 3. Airbyte will auto-detected the tables in bigquery and postgres.  You can choose the tables, sync mode, replication frequency etc.
-![airbyte2](/resources/images/post1/airbyte2.png)
+![airbyte2](/resources/images/post1/airbyte2.png){ width=50%, height=50% }
 
 
-### 3. "Free" DIY 
-
-If budget or privacy is your concern , or you just want to have everything under your own control, 
-definitely you can implement such function on your own, and integrated it into your cron schedulers. 
-
-I will detail my approach to syncing Bigquery to Postgres and schedule the job in Apache Airflow/ Cloud Composer.
-
-
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
+### 3. DIY
+We would like to have this part under our own control, and integrate it with own Airflow pipeline. 
+Here I detail my solution. The logic is rather simple:
+1. read from Bigquery tables using Python bigquery client connector, and convert the results into dataframe
+```python
+## pseudo code
+from google.cloud import bigquery
+client = bigquery.Client(project = project )
+query_job = client.query(QUERY)
+df = query_job.to_dataframe()
+df = df.where(pd.notnull(df), None)
 ```
+2. Write the dataframe to postgres table. In this step, we have to handle conflicting primary keys 
+( it will fail if we do not handle the case where you write some rows whose primary key already exists in the postgres table)
+ Thanks to this [asnwer](https://stackoverflow.com/a/69662582), we can add a customized method to the df.to_sql method
+```python
+## pseudo code
+def insert_do_nothing_on_conflicts(sqltable, conn, keys, data_iter):
+    """
+    Execute SQL statement inserting data, and do nothing on conflicting primary keys
+
+    Parameters
+    ----------
+    sqltable : pandas.io.sql.SQLTable
+    conn : sqlalchemy.engine.Engine or sqlalchemy.engine.Connection
+    keys : list of str
+        Column names
+    data_iter : Iterable that iterates the values to be inserted
+    """
+    from sqlalchemy.dialects.postgresql import insert
+    from sqlalchemy import table, column
+    columns = []
+    for c in keys:
+        columns.append(column(c))
+
+    if sqltable.schema:
+        table_name = '{}.{}'.format(sqltable.schema, sqltable.name)
+    else:
+        table_name = sqltable.name
+
+    mytable = table(table_name, *columns)
+
+    insert_stmt = insert(mytable).values(list(data_iter))
+    do_nothing_stmt = insert_stmt.on_conflict_do_nothing(index_elements=[primaryKey])
+
+    conn.execute(do_nothing_stmt)
+
+df.to_sql(table_name , if_exists='append', con= engine, index=False, method=insert_do_nothing_on_conflicts, chunksize=chunksize)
+
+```
+
+3. package the code into an Airflow PythonOperator and schedule it !
+
+4. possible improvement: select only NEW rows from bigquery table rather than full-table (based on _ts_ms), when the size of table gets way too big
+
+
+I also packaged the code as a typer app , and you can find it in this [repo](https://github.com/yyfhust/Sync_Bigquery_to_Postgres)
+
+
 
