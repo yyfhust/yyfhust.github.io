@@ -46,7 +46,7 @@ I personally have tried Airbyte.
 (do not forget to white list airbyte's IP in Cloud SQl connection config)
 ![airbyte1](/resources/images/post1/airbyte1.png)
 3. Airbyte will auto-detected the tables in bigquery and postgres.  You can choose the tables, sync mode, replication frequency etc.
-![airbyte2](/resources/images/post1/airbyte2.png){ width=50%, height=50% }
+![airbyte2](/resources/images/post1/airbyte2.png =100x20 )
 
 
 ### 3. DIY
@@ -65,7 +65,6 @@ df = df.where(pd.notnull(df), None)
 ( it will fail if we do not handle the case where you write some rows whose primary key already exists in the postgres table)
  Thanks to this [asnwer](https://stackoverflow.com/a/69662582), we can add a customized method to the df.to_sql method
 ```python
-## pseudo code
 def insert_do_nothing_on_conflicts(sqltable, conn, keys, data_iter):
     """
     Execute SQL statement inserting data, and do nothing on conflicting primary keys
@@ -88,14 +87,10 @@ def insert_do_nothing_on_conflicts(sqltable, conn, keys, data_iter):
         table_name = '{}.{}'.format(sqltable.schema, sqltable.name)
     else:
         table_name = sqltable.name
-
     mytable = table(table_name, *columns)
-
     insert_stmt = insert(mytable).values(list(data_iter))
     do_nothing_stmt = insert_stmt.on_conflict_do_nothing(index_elements=[primaryKey])
-
     conn.execute(do_nothing_stmt)
-    
 df.to_sql(table_name , if_exists='append', con= engine, index=False, method=insert_do_nothing_on_conflicts, chunksize=chunksize)
 ```
 
