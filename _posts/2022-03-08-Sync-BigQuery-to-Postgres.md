@@ -97,7 +97,6 @@ def insert_do_nothing_on_conflicts(sqltable, conn, keys, data_iter):
     conn.execute(do_nothing_stmt)
 
 df.to_sql(table_name , if_exists='append', con= engine, index=False, method=insert_do_nothing_on_conflicts, chunksize=chunksize)
-
 ```
 
 3. package the code into an Airflow PythonOperator and schedule it !
