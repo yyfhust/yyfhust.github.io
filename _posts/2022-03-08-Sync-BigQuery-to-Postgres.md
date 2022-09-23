@@ -47,6 +47,7 @@ I personally have tried Airbyte.
 ![airbyte1](/resources/images/post1/airbyte1.png)
 
 3. Airbyte will auto-detected the tables in bigquery and postgres.  You can choose the tables, sync mode, replication frequency etc.
+
 <p align="center">
 <img src="/resources/images/post1/airbyte2.png" alt="airbyte2" width="200"/>
 </p>

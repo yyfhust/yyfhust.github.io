@@ -18,9 +18,11 @@ to the frontend, then the browser "clicks" the url to, for example, render image
 The question is: how to share the URL to the end user in a safe manner ? 
 If the web application is an internal tool, which is only used by few people internally, 
 we can use "Authenticated URL", so that "Only users granted permission can access the object with this link". 
-<p align="center">
+
+
 ![1](/resources/images/post3/1.png)
-</p>
+
+
 It is workable as we can manage IAM internally and only grant access to employees who could have access.
 
 However, if the application is towards the whole world or many external customers, it will be painful to manage access. 
@@ -31,13 +33,13 @@ It is easy to come up with the solution: using pubic URL.
 Indeed we can publicize the gcs files / buckets by granting "allUsers" principals access to the gcs, so that anyone on the internet 
 can access the URL. In the following example, I granted "allUsers" access on the object-level as I turn on the fine-grained
 access control mode. You could also grant "allUsers" access on the bucket level if uniform access control mode is chosen.
-<p align="center">
+
 ![2](/resources/images/post3/2.png)
-</p>
+
 Then public url is auto-generated!
-<p align="center">
+
 ![3](/resources/images/post3/3.png)
-</p>
+
 
 It is as easy as pie to come up with and implement such solution, 
 while it is also natural to have security concern. 
@@ -86,25 +88,25 @@ def generate_download_signed_url_v4(bucket_name, blob_name):
 
 Tested the code in Jupyter Lab and it did create the signed URL.(note: do not forget to run `os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"`. key.json is generated from 
 a service account, which has sufficient permission for generating signed URL.) 
-<p align="center">
+
 ![4](/resources/images/post3/4.png)
-</p>
+
 
 However, it failed when I run the same snippet of code in cloud run / function ...
 Let's take cloud functions as an example. 
 
 Create a cloud function instance which runs the same code as above. 
 - Specify a service account with at least the permission `serviceAccountTokenCreator` and `storage.objectCreator`
-<p align="center">
+
 ![5](/resources/images/post3/5.png)
-</p>
+
 
 - Allow all traffic in ingress settings (make it easier for testing)
 
 After all set, I triggered the cloud functions. Cloud function raised the following exceptions
-<p align="center">
+
 ![7](/resources/images/post3/7.png)
-</p>
+
 
 The root cause of the above exception is explained in the comment of the python code :  `Note that this method requires a service account key file. You can not use this if you are using Application Default Credentials from Google Compute
 Engine or from the Google Cloud SDK.`
