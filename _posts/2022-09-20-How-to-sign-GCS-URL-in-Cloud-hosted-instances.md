@@ -314,8 +314,11 @@ the credentials you are currently using <class 'google.auth.compute_engine.crede
 ```
 jump into the [source code](https://google-auth.readthedocs.io/en/master/reference/google.auth.compute_engine.credentials.html) of `google.auth.compute_engine.credentials`, and we can find the class 
 `IDTokenCredentials` implements both `Credentials` and `Signing` class, so we can try to leverage this class.
-
-
+We can construct a "signed" credential by passing request , target_audience and service_account to the class.
+- request is initilized from google.auth.transport.requests.Request()
+- target_audience is not important here, but it is strange we cannot leave it empty. Pass an empty string "" or any string would be fine.
+- service_account_email is the service account the cloud function is using. It can be from env vars or from credentials.service_account_email. Remeber to 
+refresh credential , otherwise the email will be "default".
 ```python
 import datetime
 from google import auth
@@ -328,10 +331,11 @@ def generate_download_signed_url_v4(bucket_name, blob_name):
     
     credentials, _ = google.auth.default()   ## fetch credentials instance
     request = google.auth.transport.requests.Request()
+    credentials.refresh(request) ## have to refresh , otherwise the email will be "default"
     service_account_email = credentials.service_account_email ## service account email
     credentials_signed = google.auth.compute_engine.IDTokenCredentials(
         request=request,
-        target_audience="",
+        target_audience="dummy",
         service_account_email=service_account_email
     )
 
