@@ -6,6 +6,13 @@ tags: GCP
 
 ## How to sign GCS URL in Cloud-hosted instances (cloud run, cloud functions, compute engine etc..)
 
+Signed GCS URL is useful in many scenarios. However, all the google's sample python code require us to "upload" the private
+key file together with the code to cloud compute instances such as cloud functions, cloud run etc... 
+
+In this blog, I investigated the reasons why private key file is required in sample implementations and how to get rid of key files and 
+sign GCS URL in the cloud run / functions ... 
+
+
 ### 1. Share files via Google Cloud Storage (GCS)
 Google Cloud Storage (GCS) is a cloud-hosted and fully-managed online file storage web service.  
 Simply speaking, you can assume GCS as an online giant "disk", where you can save any type of files in folders
