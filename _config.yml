@@ -24,7 +24,12 @@ rss: rss
 kramdown:
   syntax_highlighter_opts:
     disable: true
-    
+
+header_pages:
+  - about.html
+  - archive.md
+  - travel.md
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
