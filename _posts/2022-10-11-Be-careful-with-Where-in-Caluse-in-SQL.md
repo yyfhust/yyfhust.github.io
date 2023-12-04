@@ -86,7 +86,7 @@ Let's try to understand why 2 ""
 2 NOT IN (1,3, NULL) is equivalent to 2 != 1 and 2 != 3 and 2 != NULL -> True and True and UNKNOWN -> UNKNOWN
 
 [Explanation](https://en.wikipedia.org/wiki/Null_(SQL)#Comparisons_with_NULL_and_the_three-valued_logic_(3VL)): 
-1. The comparison (> < = != ) with NULL yields UNKNOWN. To check if a value is or is't NULL, you have to use function ISNULL().
+1. The comparison (> < = != ) with NULL yields UNKNOWN. To check if a value is or is' t NULL, you have to use function ISNULL().
 2. True and UNKNOWN = UNKNOWN
 3. True or UNKNOWN = True 
 
